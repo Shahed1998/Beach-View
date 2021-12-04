@@ -36,20 +36,23 @@ void drawScene() {
 
 
     glPushMatrix();
-     // Horizon
+    // Horizon
     Lines L1;
-    glColor3f(0.0,1.0,1.0);
-    L1.horizontal_long_line(1.5);
+    //glColor3f(0.0,1.0,1.0);
+    //L1.horizontal_long_line(1.5);
+    //L1.horizontal_long_line(-1.5);
     // Regular quads
-    glColor3f(1.0,1.0,0.0);
-    L1.lined_quad(2.0, 1.0);
-    L1.filled_quad(-2.0,1.0);
+    //glColor3f(1.0,1.0,0.0);
+    //L1.lined_quad(-2.0, 1.0);
+    /*L1.filled_quad(-2.0,1.0);
     L1.lined_quad(-2.0, -1.0);
-    L1.filled_quad(2.0, -1.0);
+    L1.filled_quad(2.0, -1.0); */
+    //L1.filled_quad(2.0, 1.0);
+    L1.straightLine(1.0, 0.0);
+    glTranslatef(1.0, 0.0, 0.0);
+    L1.straightLine(0.0, 1.0);
 
     glPopMatrix();
-
-
 
 	glutSwapBuffers();
 }
@@ -95,7 +98,7 @@ int main(int argc, char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	//Create the window
 	glutCreateWindow("Beach View");
-	glutFullScreen();
+	//glutFullScreen();
 	glutKeyboardFunc(keyPressed);
 	initRendering();
 

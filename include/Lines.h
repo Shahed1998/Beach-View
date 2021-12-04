@@ -14,6 +14,7 @@ class Lines
         void horizontal_long_line(float y_axis);
         void lined_quad(float max_x_axis, float max_y_axis);
         void filled_quad(float max_x_axis, float max_y_axis);
+        void straightLine(float x, float y);
 };
 
 #endif // LINES_H

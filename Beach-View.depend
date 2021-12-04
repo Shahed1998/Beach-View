@@ -227,7 +227,7 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1638576515 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
+1638616295 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
 	<iostream>
 	<stdlib.h>
 	<math.h>
@@ -246,13 +246,13 @@
 	<GL/gl.h>
 	<GL/glut.h>
 
-1638576048 s:\varsity\computer_graphics\final\tasks\beach-view\include\lines.h
+1638615878 s:\varsity\computer_graphics\final\tasks\beach-view\include\lines.h
 	<iostream>
 	<stdlib.h>
 	<math.h>
 	<GL/gl.h>
 	<GL/glut.h>
 
-1638576042 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\lines.cpp
+1638616272 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\lines.cpp
 	"Lines.h"
 
