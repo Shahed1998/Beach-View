@@ -45,8 +45,10 @@
 			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/lib" />
 		</Linker>
 		<Unit filename="include/KeyEvents.h" />
+		<Unit filename="include/Lines.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/KeyEvents.cpp" />
+		<Unit filename="src/Lines.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

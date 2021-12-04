@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1638442766 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\keyevents.cpp
+1638568615 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\keyevents.cpp
 	"KeyEvents.h"
 
 1638442574 s:\varsity\computer_graphics\final\tasks\beach-view\include\keyevents.h
@@ -227,11 +227,32 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1638442308 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
+1638576515 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
 	<iostream>
 	<stdlib.h>
 	<math.h>
 	<GL/gl.h>
 	<GL/glut.h>
 	"KeyEvents.h"
+	"Lines.h"
+
+1638571731 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\horizon.cpp
+	"Horizon.h"
+
+1638571774 s:\varsity\computer_graphics\final\tasks\beach-view\include\horizon.h
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<GL/gl.h>
+	<GL/glut.h>
+
+1638576048 s:\varsity\computer_graphics\final\tasks\beach-view\include\lines.h
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<GL/gl.h>
+	<GL/glut.h>
+
+1638576042 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\lines.cpp
+	"Lines.h"
 
