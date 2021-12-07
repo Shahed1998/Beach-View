@@ -1,11 +1,11 @@
-#include "Lines.h"
+#include "Shapes.h"
 
-Lines::Lines()
+Shapes::Shapes()
 {
     //ctor
 }
 
-void Lines::horizontal_long_line(float y_axis)
+void Shapes::horizontal_long_line(float y_axis)
 {
     glBegin(GL_LINES);
     glVertex3f(-100.5, y_axis, 0.0);
@@ -13,7 +13,7 @@ void Lines::horizontal_long_line(float y_axis)
     glEnd();
 }
 
-void Lines::lined_quad(float max_x_axis, float max_y_axis)
+void Shapes::lined_quad(float max_x_axis, float max_y_axis)
     {
         //Square with lines
         glBegin(GL_LINE_LOOP);
@@ -24,7 +24,7 @@ void Lines::lined_quad(float max_x_axis, float max_y_axis)
         glEnd();
     }
 
-void Lines::filled_quad(float max_x_axis, float max_y_axis)
+void Shapes::filled_quad(float max_x_axis, float max_y_axis)
     {
         //Square with lines
         glBegin(GL_POLYGON);
@@ -35,10 +35,38 @@ void Lines::filled_quad(float max_x_axis, float max_y_axis)
         glEnd();
     }
 
-void Lines::straightLine(float x, float y)
+void Shapes::straightLine(float x, float y)
 {
     glBegin(GL_LINES);
     glVertex3f(0.0, 0.0, 0.0);
     glVertex3f(x, y, 0.0);
     glEnd();
+}
+
+void Shapes::dashed_circle(float r)
+{
+	glBegin(GL_LINES);
+	for(int i=0;i<200;i++)
+	{
+		float pi=3.1416;
+		float A=(i*2*pi)/100;
+		float x = r * cos(A);
+		float y = r * sin(A);
+		glVertex3f(x, y, 0.0);
+	}
+	glEnd();
+}
+
+void Shapes::filled_circle(float r)
+{
+	glBegin(GL_POLYGON);
+	for(int i=0;i<200;i++)
+	{
+		float pi=3.1416;
+		float A=(i*2*pi)/100;
+		float x = r * cos(A);
+		float y = r * sin(A);
+		glVertex3f(x, y, 0.0);
+	}
+	glEnd();
 }

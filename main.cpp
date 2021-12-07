@@ -5,7 +5,7 @@
 #include <GL/glut.h>
 // User defined headers
 #include "KeyEvents.h"
-#include "Lines.h"
+#include "Shapes.h"
 
 using namespace std;
 
@@ -34,24 +34,98 @@ void drawScene() {
 	glRotatef(-_cameraAngle, 0.0, 1.0, 0.0); //Rotate the camera
 	glTranslatef(0.0, 0.0, -7.0); //Move forward 5 units
 
+	//Lamp Stand
+    glPushMatrix();
 
     glPushMatrix();
-    // Horizon
-    Lines L1;
-    //glColor3f(0.0,1.0,1.0);
-    //L1.horizontal_long_line(1.5);
-    //L1.horizontal_long_line(-1.5);
-    // Regular quads
-    //glColor3f(1.0,1.0,0.0);
-    //L1.lined_quad(-2.0, 1.0);
-    /*L1.filled_quad(-2.0,1.0);
-    L1.lined_quad(-2.0, -1.0);
-    L1.filled_quad(2.0, -1.0); */
-    //L1.filled_quad(2.0, 1.0);
-    L1.straightLine(1.0, 0.0);
-    glTranslatef(1.0, 0.0, 0.0);
-    L1.straightLine(0.0, 1.0);
+    Shapes lampStand;
+    glColor3f(0.412, 0.412, 0.412);
+    glTranslatef(-4.0, -1.6, 0.0);
+    lampStand.filled_quad(0.1,1.5);
+    glPopMatrix();
 
+    glPushMatrix();
+    glRotatef(10, 0.0, 0.0, 1.0);
+    glTranslatef(-4.2, 0.4, 0.0);
+    lampStand.filled_quad(1.0,0.05);
+    glPopMatrix();
+
+    glPopMatrix();
+
+    // Lamp light
+    glPushMatrix();
+    glColor3f(1.0, 1.0, 0.0);
+    glTranslatef(-3.2, -0.6, 0.0);
+    glRotatef(-92, 1.0, 0.0, 0.0);
+    glRotatef(-10, 0.0, 1.0, 0.0);
+    glRotatef(_angle, 0.0, 0.0, 1.0);
+    glutWireCone(0.2, 0.5, 20, 20);
+    glPopMatrix();
+
+	// Sun
+    glPushMatrix();
+    Shapes sun;
+    glColor3f(1.0, 1.0, 0.0);
+    glTranslatef(-4.0, 2.5, 0.0);
+    sun.filled_circle(0.3);
+    glPopMatrix();
+
+	// Sky
+    glPushMatrix();
+    Shapes sky;
+    glColor3f(0.529, 0.808, 0.980);
+    glTranslatef(-5.0, 1.5, 0.0);
+    sky.filled_quad(100.0, 1.5);
+    glPopMatrix();
+
+	// Sea
+    glPushMatrix();
+    Shapes sea;
+    glColor3f(0.0, 0.749, 1.0);
+    glTranslatef(-5.0, 0.5, 0.0);
+    sea.filled_quad(100.0, 1.0);
+    glPopMatrix();
+
+    // Sand
+    glPushMatrix();
+    Shapes sand;
+    glColor3f(0.957, 0.643, 0.376);
+    glTranslatef(-5.0, -1.5, 0.0);
+    sand.filled_quad(100.0, 2.0);
+    glPopMatrix();
+
+    // Road Border
+    glPushMatrix();
+    Shapes roadBorder;
+    glColor3f(0.502, 0.502, 0.502);
+    glTranslatef(-5.0, -1.7, 0.0);
+    roadBorder.filled_quad(100.0, 0.2);
+    glPopMatrix();
+
+    // Road Lines
+    glPushMatrix();
+    Shapes roadLines;
+    glColor3f(1.0, 1.0, 1.0);
+    glTranslatef(0.2, -2.4, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(-4.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(-1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(-1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glPopMatrix();
+
+    // Road
+    glPushMatrix();
+    Shapes road;
+    glColor3f(0.663, 0.663, 0.663);
+    glTranslatef(-5.0, -3.0, 0.0);
+    road.filled_quad(100.0, 1.3);
     glPopMatrix();
 
 	glutSwapBuffers();
@@ -80,7 +154,7 @@ void update(int value) {
 	glutPostRedisplay(); //Tell GLUT that the display has changed
 
 	//Tell GLUT to call update again in 10 milliseconds
-	//glutTimerFunc(25, update, 0);
+	glutTimerFunc(25, update, 0);
 
 }
 
@@ -98,7 +172,7 @@ int main(int argc, char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	//Create the window
 	glutCreateWindow("Beach View");
-	//glutFullScreen();
+	glutFullScreen();
 	glutKeyboardFunc(keyPressed);
 	initRendering();
 
@@ -107,7 +181,7 @@ int main(int argc, char** argv) {
 
 	glutReshapeFunc(handleResize);
 
-	//glutTimerFunc(25, update, 0); //Add a timer
+	glutTimerFunc(25, update, 0); //Add a timer
 
 	glutMainLoop();
 	return 0;

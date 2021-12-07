@@ -227,14 +227,14 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1638616295 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
+1638868271 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
 	<iostream>
 	<stdlib.h>
 	<math.h>
 	<GL/gl.h>
 	<GL/glut.h>
 	"KeyEvents.h"
-	"Lines.h"
+	"Shapes.h"
 
 1638571731 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\horizon.cpp
 	"Horizon.h"
@@ -255,4 +255,14 @@
 
 1638616272 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\lines.cpp
 	"Lines.h"
+
+1638868444 s:\varsity\computer_graphics\final\tasks\beach-view\include\shapes.h
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<GL/gl.h>
+	<GL/glut.h>
+
+1638868419 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\shapes.cpp
+	"Shapes.h"
 
