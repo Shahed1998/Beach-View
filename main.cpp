@@ -78,6 +78,51 @@ void drawScene() {
     sky.filled_quad(100.0, 1.5);
     glPopMatrix();
 
+    //Boat
+    glPushMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glColor3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(1.0, 0.0, 0.0);
+    glVertex3f(2.0, 1.0, 0.0);
+    glVertex3f(-2.0, 1.0, 0.0);
+    glVertex3f(-1.0, 0.0, 0.0);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 0.0);
+    glVertex3f(0.6, 1.2, 0.0);
+    glVertex3f(0.4, 1.2, 0.0);
+    glVertex3f(0.4, 1.4, 0.0);
+    glVertex3f(0.6, 1.4, 0.0);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glColor3f(1.0, 1.0, 0.0);
+    glVertex3f(-0.6, 1.2, 0.0);
+    glVertex3f(-0.4, 1.2, 0.0);
+    glVertex3f(-0.4, 1.4, 0.0);
+    glVertex3f(-0.6, 1.4, 0.0);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glColor3f(1.0, 0.0, 0.0);
+    glVertex3f(-1.0, 1.0, 0.0);
+    glVertex3f(1.0, 1.0, 0.0);
+    glVertex3f(1.0, 2.0, 0.0);
+    glVertex3f(-1.0, 2.0, 0.0);
+    glEnd();
+    glPopMatrix();
+    glPopMatrix();
+
 	// Sea
     glPushMatrix();
     Shapes sea;
@@ -127,6 +172,8 @@ void drawScene() {
     glTranslatef(-5.0, -3.0, 0.0);
     road.filled_quad(100.0, 1.3);
     glPopMatrix();
+
+
 
 	glutSwapBuffers();
 }
