@@ -19,6 +19,10 @@ class Shapes
         void filled_circle(float r);
         void dashed_halfCircle(float r);
         void filled_halfCircle(float r);
+        void showCloud(float cloudPos, float y);
+        void showBirds(float birdPos);
+        void showBoat(float boatPos, float y);
+        void showSunMoon(float red, float green, float blue);
 };
 
 #endif // LINES_H

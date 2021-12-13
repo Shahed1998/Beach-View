@@ -24,6 +24,8 @@ float wheelAngle = 360;
 bool bounceBack = false;
 float ballAngle = 0.0;
 
+//char sky_color = 'd';
+
 //Initializes 3D rendering
 void initRendering() {
 	glEnable(GL_DEPTH_TEST);
@@ -45,152 +47,76 @@ void drawScene() {
 	glRotatef(-_cameraAngle, 0.0, 1.0, 0.0); //Rotate the camera
 	glTranslatef(0.0, 0.0, -7.0); //Move forward 5 units
 
-    // Bird 1
-    glPushMatrix();
-    glTranslatef(birdPos1, 2.0, 0.0);
-    Shapes bird1;
-    glColor3f(0.0, 0.0, 0.0);
-    bird1.dashed_halfCircle(0.05);
-    glTranslatef(0.1, 0.0, 0.0);
-    bird1.dashed_halfCircle(0.05);
-    glPopMatrix();
+    // Shape's instances
+    Shapes car,
+        boat1, boat2,
+        cloud1, cloud2, cloud3,
+        bird1, bird2, bird3,
+        moon, sun;
 
-    // Bird 2
-    glPushMatrix();
-    glTranslatef(birdPos2, 2.0, 0.0);
-    Shapes bird2;
-    glColor3f(0.0, 0.0, 0.0);
-    bird2.dashed_halfCircle(0.05);
-    glTranslatef(0.1, 0.0, 0.0);
-    bird2.dashed_halfCircle(0.05);
-    glPopMatrix();
-
-    // Bird 3
-    glPushMatrix();
-    glTranslatef(birdPos3, 2.0, 0.0);
-    Shapes bird3;
-    glColor3f(0.0, 0.0, 0.0);
-    bird3.dashed_halfCircle(0.05);
-    glTranslatef(0.1, 0.0, 0.0);
-    bird3.dashed_halfCircle(0.05);
-    glPopMatrix();
-
-    // Hot air balloon
-    glPushMatrix();
-    Shapes hotAirBalloon;
-    glTranslatef(hotAirBalloonPos, 2.3, 0.0);
-    glColor3f(1.00, 0.271, 0.0);
-    hotAirBalloon.filled_halfCircle(0.29);
-    glRotatef(90, 1.0, 0.0, 0.0);
-    glutWireCone(0.25, 0.6, 20, 20);
-    glRotatef(-90, 1.0, 0.0, 0.0);
-    glTranslatef(0.0, -0.6, 0.0);
-    glColor3f(0.0, 0.0, 0.0);
-    glutWireCube(0.2);
-    glColor3f(0.545, 0.0, 0.0);
-    glutSolidCube(0.2);
-    glPopMatrix();
-
-    // Cloud 1
-    glPushMatrix();
-    Shapes cloud1;
-    glTranslatef(cloudPos1, 2.3, 0.0);
-    glColor3f(1.0, 1.0, 1.0);
-    cloud1.filled_circle(0.3);
-    glTranslatef(-0.3, 0.0, 0.0);
-    cloud1.filled_circle(0.2);
-    glTranslatef(0.6, 0.0, 0.0);
-    cloud1.filled_circle(0.2);
-    glPopMatrix();
-
-    // Cloud 2
-    glPushMatrix();
-    Shapes cloud2;
-    glTranslatef(cloudPos2, 2.0, 0.0);
-    glColor3f(1.0, 1.0, 1.0);
-    cloud2.filled_circle(0.3);
-    glTranslatef(-0.3, 0.0, 0.0);
-    cloud2.filled_circle(0.2);
-    glTranslatef(0.6, 0.0, 0.0);
-    cloud2.filled_circle(0.2);
-    glPopMatrix();
-
-    // Cloud 3
-    glPushMatrix();
-    Shapes cloud3;
-    glTranslatef(cloudPos3, 2.3, 0.0);
-    glColor3f(1.0, 1.0, 1.0);
-    cloud3.filled_circle(0.3);
-    glTranslatef(-0.3, 0.0, 0.0);
-    cloud3.filled_circle(0.2);
-    glTranslatef(0.6, 0.0, 0.0);
-    cloud3.filled_circle(0.2);
-    glPopMatrix();
-
-	// Sun
-    glPushMatrix();
-    Shapes sun;
-    glColor3f(1.0, 1.0, 0.0);
-    glTranslatef(-4.0, 2.5, 0.0);
-    sun.filled_circle(0.3);
-    glPopMatrix();
-
-    //Boat
-    glPushMatrix();
-    glScalef(0.3, 0.2, 1.0);
-    glTranslatef(KeyEvents::boatPos, 6.0, 0.0);
-    glPushMatrix();
-    glBegin(GL_POLYGON);
-    glColor3f(0.0, 0.0, 0.0);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(1.0, 0.0, 0.0);
-    glVertex3f(2.0, 1.0, 0.0);
-    glVertex3f(-2.0, 1.0, 0.0);
-    glVertex3f(-1.0, 0.0, 0.0);
-    glEnd();
-    glPopMatrix();
-    glPushMatrix();
-    glBegin(GL_POLYGON);
-    glColor3f(1.0, 1.0, 0.0);
-    glVertex3f(0.6, 1.2, 0.0);
-    glVertex3f(0.4, 1.2, 0.0);
-    glVertex3f(0.4, 1.4, 0.0);
-    glVertex3f(0.6, 1.4, 0.0);
-    glEnd();
-    glPopMatrix();
-    glPushMatrix();
-    glBegin(GL_POLYGON);
-    glColor3f(1.0, 1.0, 0.0);
-    glVertex3f(-0.6, 1.2, 0.0);
-    glVertex3f(-0.4, 1.2, 0.0);
-    glVertex3f(-0.4, 1.4, 0.0);
-    glVertex3f(-0.6, 1.4, 0.0);
-    glEnd();
-    glPopMatrix();
-    glPushMatrix();
-    glBegin(GL_POLYGON);
-    glColor3f(1.0, 0.0, 0.0);
-    glVertex3f(-1.0, 1.0, 0.0);
-    glVertex3f(1.0, 1.0, 0.0);
-    glVertex3f(1.0, 2.0, 0.0);
-    glVertex3f(-1.0, 2.0, 0.0);
-    glEnd();
-    glPopMatrix();
-    glPopMatrix();
-
-	// Sky
-    glPushMatrix();
-    Shapes sky;
-    glColor3f(0.529, 0.808, 0.980);
-    glTranslatef(-5.0, 1.5, 0.0);
-    sky.filled_quad(100.0, 1.5);
-    glPopMatrix();
+    // Boat
+    boat2.showBoat(KeyEvents::boatPos2, 4.5);
+    boat1.showBoat(KeyEvents::boatPos, 6.0);
 
 
+    if(KeyEvents::skyColor=='n')
+    {
+        // Moon
+        moon.showSunMoon(1.0, 1.0, 1.0);
+
+        // Sky
+        glPushMatrix();
+            Shapes sky;
+            glColor3f(0.0, 0.0, 0.0);
+            glTranslatef(-5.0, 1.5, 0.0);
+            sky.filled_quad(100.0, 1.5);
+        glPopMatrix();
+
+
+    }else if(KeyEvents::skyColor=='m')
+    {
+        // Hot air balloon
+        glPushMatrix();
+            Shapes hotAirBalloon;
+            glTranslatef(hotAirBalloonPos, 2.3, 0.0);
+            glColor3f(1.00, 0.271, 0.0);
+            hotAirBalloon.filled_halfCircle(0.29);
+            glRotatef(90, 1.0, 0.0, 0.0);
+            glutWireCone(0.25, 0.6, 20, 20);
+            glRotatef(-90, 1.0, 0.0, 0.0);
+            glTranslatef(0.0, -0.6, 0.0);
+            glColor3f(0.0, 0.0, 0.0);
+            glutWireCube(0.2);
+            glColor3f(0.545, 0.0, 0.0);
+            glutSolidCube(0.2);
+        glPopMatrix();
+
+        // Clouds
+       cloud1.showCloud(cloudPos1, 2.3);
+       cloud2.showCloud(cloudPos2, 2.0);
+       cloud3.showCloud(cloudPos3, 2.3);
+
+       // Birds
+       bird1.showBirds(birdPos1);
+       bird2.showBirds(birdPos2);
+       bird3.showBirds(birdPos3);
+
+        // Sun
+        sun.showSunMoon(1.0, 1.0, 0.0);
+
+        // Sky
+        glPushMatrix();
+        Shapes sky;
+        glColor3f(0.529, 0.808, 0.980);
+        glTranslatef(-5.0, 1.5, 0.0);
+        sky.filled_quad(100.0, 1.5);
+        glPopMatrix();
+
+}
 
     // 3D look
 	glPushMatrix();
-	glRotatef(1.5, 0.0, 0.0, 1.0);
+	//glRotatef(1.5, 0.0, 0.0, 1.0);
 
     //Lamp Stand
     glPushMatrix();
@@ -208,14 +134,18 @@ void drawScene() {
     glPopMatrix();
 
     // Lamp light
-    glPushMatrix();
-    glColor3f(1.0, 1.0, 0.0);
-    glTranslatef(-3.2, -0.6, 0.0);
-    glRotatef(-92, 1.0, 0.0, 0.0);
-    glRotatef(-10, 0.0, 1.0, 0.0);
-    glRotatef(_angle, 0.0, 0.0, 1.0);
-    glutWireCone(0.2, 0.5, 20, 20);
-    glPopMatrix();
+    if(KeyEvents::skyColor=='n')
+    {
+        glPushMatrix();
+        glColor3f(1.0, 1.0, 0.0);
+        glTranslatef(-3.2, -0.6, 0.0);
+        glRotatef(-92, 1.0, 0.0, 0.0);
+        glRotatef(-10, 0.0, 1.0, 0.0);
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.2, 0.5, 20, 20);
+        glPopMatrix();
+    }
+
 
     // Volley ball
     glPushMatrix();
@@ -255,7 +185,7 @@ void drawScene() {
     // Car
 	glPushMatrix();
 	glTranslatef(carPos, -2.6, 0.0);
-	Shapes car;
+	glScalef(0.8,0.8,0.0);
 	// Back wheel
 	glPushMatrix();
 	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
@@ -286,16 +216,32 @@ void drawScene() {
 	car.filled_circle(0.2);
 	glPopMatrix();
     // Front light
-	glTranslatef(0.65, 0.4, 0.0);
-	glColor3f(1.0, 1.0, 0.0);
-	glRotatef(-90, 0.0, 1.0, 0.0);
-	glPushMatrix();
-    glRotatef(_angle, 0.0, 0.0, 1.0);
-	glutWireCone(0.18, 0.3, 20, 20);
-	glPopMatrix();
-	glRotatef(90, 0.0, 1.0, 0.0);
-	glTranslatef(-0.3, -0.15, 0.0);
-	car.filled_quad(0.15, 0.3);
+    if(KeyEvents::skyColor=='n')
+    {
+        glTranslatef(0.65, 0.4, 0.0);
+        glColor3f(1.0, 1.0, 0.0);
+        glRotatef(-90, 0.0, 1.0, 0.0);
+        glPushMatrix();
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.18, 0.3, 20, 20);
+        glPopMatrix();
+        glRotatef(90, 0.0, 1.0, 0.0);
+        glTranslatef(-0.3, -0.15, 0.0);
+        car.filled_quad(0.15, 0.3);
+    }else
+    {
+        glTranslatef(0.65, 0.4, 0.0);
+        glColor3f(1.0, 1.0, 0.0);
+        glRotatef(-90, 0.0, 1.0, 0.0);
+        glPushMatrix();
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        //glutWireCone(0.18, 0.3, 20, 20);
+        glPopMatrix();
+        glRotatef(90, 0.0, 1.0, 0.0);
+        glTranslatef(-0.3, -0.15, 0.0);
+        car.filled_quad(0.15, 0.3);
+    }
+
 	// Back light
 	glTranslatef(-1.85, 0.15, 0.0);
 	glColor3f(1.0, 0.0, 0.0);
@@ -477,6 +423,7 @@ int main(int argc, char** argv) {
 	cout << "2. Press a to move boat left" << endl;
 	cout << "3. Press c to move/stop car" << endl;
 	cout << "4. Press v to throw volley ball" << endl;
+	cout << "5. Press m or n to toggle between day and night" << endl;
 
 	glutMainLoop();
 	return 0;
