@@ -70,3 +70,31 @@ void Shapes::filled_circle(float r)
 	}
 	glEnd();
 }
+
+void Shapes::dashed_halfCircle(float r)
+{
+	glBegin(GL_LINES);
+	for(int i=0;i<=50;i++)
+	{
+		float pi=3.1416;
+		float A=(i*2*pi)/100;
+		float x = r * cos(A);
+		float y = r * sin(A);
+		glVertex3f(x, y, 0.0);
+	}
+	glEnd();
+}
+
+void Shapes::filled_halfCircle(float r)
+{
+	glBegin(GL_POLYGON);
+	for(int i=0;i<=50;i++)
+	{
+		float pi=3.1416;
+		float A=(i*2*pi)/100;
+		float x = r * cos(A);
+		float y = r * sin(A);
+		glVertex3f(x, y, 0.0);
+	}
+	glEnd();
+}

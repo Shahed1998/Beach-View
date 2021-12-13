@@ -17,6 +17,8 @@ class Shapes
         void straightLine(float x, float y);
         void dashed_circle(float r);
         void filled_circle(float r);
+        void dashed_halfCircle(float r);
+        void filled_halfCircle(float r);
 };
 
 #endif // LINES_H

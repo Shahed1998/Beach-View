@@ -10,6 +10,8 @@
 class KeyEvents
 {
     public:
+        static float boatPos;
+        static bool moveCar, moveVolleyBall;
         KeyEvents();
         void key(unsigned char key, int x, int y);
 
