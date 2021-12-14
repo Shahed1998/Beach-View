@@ -2,8 +2,9 @@
 
 float KeyEvents::boatPos = 0.0, KeyEvents::boatPos2 = -5.0;
 bool KeyEvents::moveCar = true;
+bool KeyEvents::carLight = false;
 bool KeyEvents::moveVolleyBall = true;
-char KeyEvents::skyColor = 'm';
+char KeyEvents::skyColor = 'm', KeyEvents::roomWindow = 'p';
 
 KeyEvents::KeyEvents()
 {
@@ -62,7 +63,15 @@ void KeyEvents::key(unsigned char key, int x, int y)
             else
                 KeyEvents::moveCar = true;
             break;
-
+        case 'l':
+            if(! KeyEvents::carLight)
+            {
+                KeyEvents::carLight = true;
+            }else
+            {
+                KeyEvents::carLight = false;
+            }
+            break;
         // To throw volley ball
         case 'v':
             if(!KeyEvents::moveVolleyBall)
@@ -73,6 +82,12 @@ void KeyEvents::key(unsigned char key, int x, int y)
             break;
         case 'm':
             KeyEvents::skyColor = 'm';
+            break;
+        case 'k':
+            KeyEvents::roomWindow = 'k';
+            break;
+        case 'p':
+            KeyEvents::roomWindow = 'p';
             break;
 
     }

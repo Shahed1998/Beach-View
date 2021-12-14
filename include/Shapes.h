@@ -22,7 +22,7 @@ class Shapes
         void showCloud(float cloudPos, float y);
         void showBirds(float birdPos);
         void showBoat(float boatPos, float y);
-        void showSunMoon(float red, float green, float blue);
+        void showSunMoon(float red, float green, float blue, float r);
 };
 
 #endif // LINES_H

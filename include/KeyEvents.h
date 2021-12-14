@@ -11,8 +11,8 @@ class KeyEvents
 {
     public:
         static float boatPos, boatPos2;
-        static char skyColor;
-        static bool moveCar, moveVolleyBall;
+        static char skyColor, roomWindow;
+        static bool moveCar, moveVolleyBall, carLight;
         KeyEvents();
         void key(unsigned char key, int x, int y);
 

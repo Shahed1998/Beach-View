@@ -119,11 +119,10 @@ void Shapes::showBirds(float birdPos)
 {
         glPushMatrix();
         glTranslatef(birdPos, 2.0, 0.0);
-        Shapes bird1;
-        glColor3f(0.0, 0.0, 0.0);
-        bird1.dashed_halfCircle(0.05);
+        glColor3f(0.1, 0.1, 0.1);
+        dashed_halfCircle(0.05);
         glTranslatef(0.1, 0.0, 0.0);
-        bird1.dashed_halfCircle(0.05);
+        dashed_halfCircle(0.05);
         glPopMatrix();
 }
 
@@ -135,6 +134,7 @@ void Shapes::showBoat(float boatPos, float y)
     //glTranslatef(KeyEvents::boatPos, 6.0, 0.0);
      glTranslatef(boatPos, y, 0.0);
     glPushMatrix();
+    // base
     glBegin(GL_POLYGON);
     glColor3f(0.0, 0.0, 0.0);
     glVertex3f(0.0, 0.0, 0.0);
@@ -144,6 +144,7 @@ void Shapes::showBoat(float boatPos, float y)
     glVertex3f(-1.0, 0.0, 0.0);
     glEnd();
     glPopMatrix();
+    // Light
     glPushMatrix();
     glBegin(GL_POLYGON);
     glColor3f(1.0, 1.0, 0.0);
@@ -153,6 +154,7 @@ void Shapes::showBoat(float boatPos, float y)
     glVertex3f(0.6, 1.4, 0.0);
     glEnd();
     glPopMatrix();
+    // Light
     glPushMatrix();
     glBegin(GL_POLYGON);
     glColor3f(1.0, 1.0, 0.0);
@@ -162,9 +164,10 @@ void Shapes::showBoat(float boatPos, float y)
     glVertex3f(-0.6, 1.4, 0.0);
     glEnd();
     glPopMatrix();
+    // Top
     glPushMatrix();
     glBegin(GL_POLYGON);
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(0.698, 0.133, 0.133);
     glVertex3f(-1.0, 1.0, 0.0);
     glVertex3f(1.0, 1.0, 0.0);
     glVertex3f(1.0, 2.0, 0.0);
@@ -175,11 +178,11 @@ void Shapes::showBoat(float boatPos, float y)
 }
 
 // Sun and moon
-void Shapes::showSunMoon(float red, float green, float blue)
+void Shapes::showSunMoon(float red, float green, float blue, float r)
 {
     glPushMatrix();
         glColor3f(red, green, blue);
         glTranslatef(-4.0, 2.5, 0.0);
-        filled_circle(0.3);
+        filled_circle(r);
     glPopMatrix();
 }

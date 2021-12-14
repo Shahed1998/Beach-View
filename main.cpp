@@ -19,12 +19,10 @@ float cloudPos3 = 0.0;
 float birdPos1 = -2.0;
 float birdPos2 = 2.0;
 float birdPos3 = 0.0;
-float hotAirBalloonPos = 2.0;
+float hotAirBalloonPos = 3.0;
 float wheelAngle = 360;
 bool bounceBack = false;
 float ballAngle = 0.0;
-
-//char sky_color = 'd';
 
 //Initializes 3D rendering
 void initRendering() {
@@ -45,25 +43,53 @@ void drawScene() {
 	glMatrixMode(GL_MODELVIEW); //Switch to the drawing perspective
 	glLoadIdentity(); //Reset the drawing perspective
 	glRotatef(-_cameraAngle, 0.0, 1.0, 0.0); //Rotate the camera
-	glTranslatef(0.0, 0.0, -7.0); //Move forward 5 units
+
 
     // Shape's instances
-    Shapes car,
+    Shapes window,car,
         boat1, boat2,
         cloud1, cloud2, cloud3,
         bird1, bird2, bird3,
         moon, sun;
 
+    // Show Key events
+   if(KeyEvents::roomWindow == 'k')
+    {
+        glColor4f(0.1, 0.1, 0.1, 0.3);
+        glTranslatef(-1.0, 0.0, -7.0); //Move forward 5 units
+        glPushMatrix();
+        glTranslatef(0.0, -2.5, 0.0);
+        glScalef(2.5, 2.5, 0.0);
+        window.filled_quad(2,2);
+        glPopMatrix();
+        // Inner Box 2
+       glPushMatrix();
+        glTranslatef(0.0, -2.5, 0.0);
+        glScalef(1.5, 2.5, 0.0);
+        window.filled_quad(-2,2);
+        glPopMatrix();
+
+    }
+    // Present scenery
+    else if(KeyEvents::roomWindow == 'p')
+    {
+
+    glTranslatef(-0.5, 0.0, -7.0); //Move forward 5 units
     // Boat
     boat2.showBoat(KeyEvents::boatPos2, 4.5);
-    boat1.showBoat(KeyEvents::boatPos, 6.0);
+    glPushMatrix();
+    glScalef(0.75, 0.75, 0.0);
+    boat1.showBoat(KeyEvents::boatPos, 8.5);
+    glPopMatrix();
 
-
+    // ----------------------------------------------------------------------
+    //                                  Night
+    //-----------------------------------------------------------------------
     if(KeyEvents::skyColor=='n')
     {
-        // Moon
-        moon.showSunMoon(1.0, 1.0, 1.0);
 
+        // Moon
+        moon.showSunMoon(1.0, 1.0, 1.0, 0.25);
         // Sky
         glPushMatrix();
             Shapes sky;
@@ -72,13 +98,267 @@ void drawScene() {
             sky.filled_quad(100.0, 1.5);
         glPopMatrix();
 
+            // 3D look
+	glPushMatrix();
+	//glRotatef(1.5, 0.0, 0.0, 1.0);
 
-    }else if(KeyEvents::skyColor=='m')
+    // Car
+glPushMatrix();
+	glTranslatef(carPos, -2.6, 0.0);
+	glScalef(0.8,0.8,0.0);
+	// Back wheel
+	glPushMatrix();
+	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.08);
+	car.straightLine(0.2, 0.0);
+	car.straightLine(0.0, 0.2);
+	car.straightLine(-0.2, 0.0);
+	car.straightLine(0.0, -0.2);
+	glColor3f(0.863, 0.863, 0.863);
+	car.filled_circle(0.18);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.28);
+	glPopMatrix();
+	// Front wheel
+	glTranslatef(1.0, 0.0, 0.0);
+	glPushMatrix();
+	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.08);
+	car.straightLine(0.2, 0.0);
+	car.straightLine(0.0, 0.2);
+	car.straightLine(-0.2, 0.0);
+	car.straightLine(0.0, -0.2);
+	glColor3f(0.863, 0.863, 0.863);
+	car.filled_circle(0.18);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.28);
+	glPopMatrix();
+    // Front light
+        glTranslatef(0.65, 0.4, 0.0);
+        glColor3f(1.0, 1.0, 0.0);
+        glRotatef(-90, 0.0, 1.0, 0.0);
+        glPushMatrix();
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.18, 0.3, 20, 20);
+        glPopMatrix();
+        glRotatef(90, 0.0, 1.0, 0.0);
+        glTranslatef(-0.3, -0.15, 0.0);
+        car.filled_quad(0.15, 0.3);
+
+	// Back light
+	glTranslatef(-1.85, 0.15, 0.0);
+	glColor3f(1.0, 0.0, 0.0);
+	car.filled_quad(0.1, 0.2);
+	// Body
+	glTranslatef(0.0, -0.4, 0.0);
+	glColor3f(0.275, 0.510, 0.706);
+	car.filled_quad(2.0, 0.6);
+	// Window frame
+	glRotatef(180, 1.0, 0.0, 0.0);
+	glTranslatef(0.65, -1.0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.straightLine(0.0,0.5);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.5, 0.0, 0.0);
+    glVertex3f(1.0, 0.5, 0.0);
+    glVertex3f(-0.6, 0.5, 0.0);
+    glVertex3f(-0.5, 0.0, 0.0);
+    glEnd();
+    // window glasses
+    glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_POLYGON);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.5, 0.0, 0.0);
+    glVertex3f(1.0, 0.5, 0.0);
+    glVertex3f(-0.6, 0.5, 0.0);
+    glVertex3f(-0.5, 0.0, 0.0);
+    glEnd();
+	glPopMatrix();
+
+    // Car2
+	glPushMatrix();
+	glTranslatef(-carPos, -2.0, 0.0);
+	glRotatef(-180, 0, 1.0, 0);
+	glScalef(0.8,0.8,0.0);
+	// Back wheel
+	glPushMatrix();
+	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.08);
+	car.straightLine(0.2, 0.0);
+	car.straightLine(0.0, 0.2);
+	car.straightLine(-0.2, 0.0);
+	car.straightLine(0.0, -0.2);
+	glColor3f(0.863, 0.863, 0.863);
+	car.filled_circle(0.18);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.28);
+	glPopMatrix();
+	// Front wheel
+	glTranslatef(1.0, 0.0, 0.0);
+	glPushMatrix();
+	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.08);
+	car.straightLine(0.2, 0.0);
+	car.straightLine(0.0, 0.2);
+	car.straightLine(-0.2, 0.0);
+	car.straightLine(0.0, -0.2);
+	glColor3f(0.863, 0.863, 0.863);
+	car.filled_circle(0.18);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.28);
+	glPopMatrix();
+    // Front light
+        glTranslatef(0.65, 0.4, 0.0);
+        glColor3f(1.0, 1.0, 0.0);
+        glRotatef(-90, 0.0, 1.0, 0.0);
+        glPushMatrix();
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.18, 0.3, 20, 20);
+        glPopMatrix();
+        glRotatef(90, 0.0, 1.0, 0.0);
+        glTranslatef(-0.3, -0.15, 0.0);
+        car.filled_quad(0.15, 0.3);
+
+
+	// Back light
+	glTranslatef(-1.85, 0.15, 0.0);
+	glColor3f(1.0, 0.0, 0.0);
+	car.filled_quad(0.1, 0.2);
+	// Body
+	glTranslatef(0.0, -0.4, 0.0);
+	glColor3f(0.600, 0.196, 0.800);
+	car.filled_quad(2.0, 0.6);
+	// Window frame
+	glRotatef(180, 1.0, 0.0, 0.0);
+	glTranslatef(0.65, -1.0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.straightLine(0.0,0.5);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.5, 0.0, 0.0);
+    glVertex3f(1.0, 0.5, 0.0);
+    glVertex3f(-0.6, 0.5, 0.0);
+    glVertex3f(-0.5, 0.0, 0.0);
+    glEnd();
+    // window glasses
+    glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_POLYGON);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.5, 0.0, 0.0);
+    glVertex3f(1.0, 0.5, 0.0);
+    glVertex3f(-0.6, 0.5, 0.0);
+    glVertex3f(-0.5, 0.0, 0.0);
+    glEnd();
+	glPopMatrix();
+
+	    //Lamp Stand
+    glPushMatrix();
+    glPushMatrix();
+    Shapes lampStand;
+    glColor3f(0.412, 0.412, 0.412);
+    glTranslatef(-4.0, -1.6, 0.0);
+    lampStand.filled_quad(0.1,1.5);
+    glPopMatrix();
+    glPushMatrix();
+    glRotatef(10, 0.0, 0.0, 1.0);
+    glTranslatef(-4.2, 0.4, 0.0);
+    lampStand.filled_quad(1.0,0.05);
+    glPopMatrix();
+    glPopMatrix();
+
+    // Lamp light
+
+        glPushMatrix();
+        glColor3f(1.0, 1.0, 0.0);
+        glTranslatef(-3.2, -0.6, 0.0);
+        glRotatef(-92, 1.0, 0.0, 0.0);
+        glRotatef(-10, 0.0, 1.0, 0.0);
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.2, 0.5, 20, 20);
+        glPopMatrix();
+
+
+
+    // Sand
+    glPushMatrix();
+    Shapes sand;
+    glColor3f(0.0, 0.0, 0.0);
+    glTranslatef(-5.0, -1.5, 0.0);
+    sand.horizontal_long_line(0.0);
+    glColor3f(0.804, 0.522, 0.247);
+    sand.filled_quad(100.0, 2.0);
+    glPopMatrix();
+
+        // Sea
+        glPushMatrix();
+        Shapes sea;
+        glBegin(GL_QUADS);
+        glVertex3f(-5.0, 0.0, 0.0);
+        glVertex3f(5.0, 0.0, 0.0);
+        glColor3f(0.098, 0.098, 0.439);
+        glVertex3f(10.0, 0.8, 0.0);
+        glVertex3f(-10.0, 0.8, 0.0);
+        glEnd();
+        glColor3f(0.098, 0.098, 0.439);
+        glTranslatef(-5.0, 0.5, 0.0);
+        sea.filled_quad(100.0, 1.5);
+        glPopMatrix();
+
+
+    // Road Border
+    glPushMatrix();
+    Shapes roadBorder;
+    glColor3f(0.502, 0.502, 0.502);
+    glTranslatef(-5.0, -1.7, 0.0);
+    roadBorder.filled_quad(100.0, 0.3);
+    glPopMatrix();
+
+    // Road Lines
+    glPushMatrix();
+    Shapes roadLines;
+    glColor3f(1.0, 1.0, 1.0);
+    glTranslatef(0.2, -2.4, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(-4.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(-1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glTranslatef(-1.5, 0.0, 0.0);
+    roadLines.filled_quad(1.0, 0.1);
+    glPopMatrix();
+
+    // Road
+    glPushMatrix();
+    Shapes road;
+    glColor3f(0.663, 0.663, 0.663);
+    glTranslatef(-5.0, -3.2, 0.0);
+    road.filled_quad(100.0, 1.5);
+    glPopMatrix();
+    glPopMatrix();
+
+
+
+
+    }
+    // ---------------------------------------------------------------------------------
+    //                                     Morning
+    // ---------------------------------------------------------------------------------
+    else if(KeyEvents::skyColor=='m')
     {
+
         // Hot air balloon
         glPushMatrix();
             Shapes hotAirBalloon;
-            glTranslatef(hotAirBalloonPos, 2.3, 0.0);
+            glTranslatef(hotAirBalloonPos, 2.4, 0.0);
             glColor3f(1.00, 0.271, 0.0);
             hotAirBalloon.filled_halfCircle(0.29);
             glRotatef(90, 1.0, 0.0, 0.0);
@@ -102,7 +382,7 @@ void drawScene() {
        bird3.showBirds(birdPos3);
 
         // Sun
-        sun.showSunMoon(1.0, 1.0, 0.0);
+        sun.showSunMoon(1.0, 1.0, 0.0, 0.3);
 
         // Sky
         glPushMatrix();
@@ -112,39 +392,16 @@ void drawScene() {
         sky.filled_quad(100.0, 1.5);
         glPopMatrix();
 
-}
+
+
+
+
+
 
     // 3D look
 	glPushMatrix();
 	//glRotatef(1.5, 0.0, 0.0, 1.0);
 
-    //Lamp Stand
-    glPushMatrix();
-    glPushMatrix();
-    Shapes lampStand;
-    glColor3f(0.412, 0.412, 0.412);
-    glTranslatef(-4.0, -1.6, 0.0);
-    lampStand.filled_quad(0.1,1.5);
-    glPopMatrix();
-    glPushMatrix();
-    glRotatef(10, 0.0, 0.0, 1.0);
-    glTranslatef(-4.2, 0.4, 0.0);
-    lampStand.filled_quad(1.0,0.05);
-    glPopMatrix();
-    glPopMatrix();
-
-    // Lamp light
-    if(KeyEvents::skyColor=='n')
-    {
-        glPushMatrix();
-        glColor3f(1.0, 1.0, 0.0);
-        glTranslatef(-3.2, -0.6, 0.0);
-        glRotatef(-92, 1.0, 0.0, 0.0);
-        glRotatef(-10, 0.0, 1.0, 0.0);
-        glRotatef(_angle, 0.0, 0.0, 1.0);
-        glutWireCone(0.2, 0.5, 20, 20);
-        glPopMatrix();
-    }
 
 
     // Volley ball
@@ -157,66 +414,43 @@ void drawScene() {
     glutWireSphere(0.2, 30, 30);
     glPopMatrix();
 
-    // Sand
-    glPushMatrix();
-    Shapes sand;
-    glColor3f(0.0, 0.0, 0.0);
-    glTranslatef(-5.0, -1.5, 0.0);
-    sand.horizontal_long_line(0.0);
-    glColor3f(0.957, 0.643, 0.376);
-    sand.filled_quad(100.0, 2.0);
-    glPopMatrix();
 
-	// Sea
-    glPushMatrix();
-    Shapes sea;
-    glBegin(GL_QUADS);
-    glVertex3f(-5.0, 0.0, 0.0);
-    glVertex3f(5.0, 0.0, 0.0);
-    glColor3f(0.0, 0.749, 1.0);
-    glVertex3f(5.0, 0.8, 0.0);
-    glVertex3f(-5.0, 0.8, 0.0);
-    glEnd();
-    glColor3f(0.0, 0.749, 1.0);
-    glTranslatef(-5.0, 0.5, 0.0);
-    sea.filled_quad(100.0, 1.5);
-    glPopMatrix();
 
     // Car
-	glPushMatrix();
+glPushMatrix();
 	glTranslatef(carPos, -2.6, 0.0);
 	glScalef(0.8,0.8,0.0);
 	// Back wheel
 	glPushMatrix();
 	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
 	glColor3f(0.0, 0.0, 0.0);
-	car.filled_circle(0.05);
+	car.filled_circle(0.08);
 	car.straightLine(0.2, 0.0);
 	car.straightLine(0.0, 0.2);
 	car.straightLine(-0.2, 0.0);
 	car.straightLine(0.0, -0.2);
 	glColor3f(0.863, 0.863, 0.863);
-	car.filled_circle(0.15);
+	car.filled_circle(0.18);
 	glColor3f(0.0, 0.0, 0.0);
-	car.filled_circle(0.2);
+	car.filled_circle(0.28);
 	glPopMatrix();
 	// Front wheel
 	glTranslatef(1.0, 0.0, 0.0);
 	glPushMatrix();
 	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
 	glColor3f(0.0, 0.0, 0.0);
-	car.filled_circle(0.05);
+	car.filled_circle(0.08);
 	car.straightLine(0.2, 0.0);
 	car.straightLine(0.0, 0.2);
 	car.straightLine(-0.2, 0.0);
 	car.straightLine(0.0, -0.2);
 	glColor3f(0.863, 0.863, 0.863);
-	car.filled_circle(0.15);
+	car.filled_circle(0.18);
 	glColor3f(0.0, 0.0, 0.0);
-	car.filled_circle(0.2);
+	car.filled_circle(0.28);
 	glPopMatrix();
     // Front light
-    if(KeyEvents::skyColor=='n')
+    if(KeyEvents::skyColor=='n' || KeyEvents::carLight)
     {
         glTranslatef(0.65, 0.4, 0.0);
         glColor3f(1.0, 1.0, 0.0);
@@ -248,7 +482,7 @@ void drawScene() {
 	car.filled_quad(0.1, 0.2);
 	// Body
 	glTranslatef(0.0, -0.4, 0.0);
-	glColor3f(0.0, 0.0, 1.0);
+	glColor3f(0.275, 0.510, 0.706);
 	car.filled_quad(2.0, 0.6);
 	// Window
 	glRotatef(180, 1.0, 0.0, 0.0);
@@ -272,12 +506,158 @@ void drawScene() {
     glEnd();
 	glPopMatrix();
 
+    // Car2
+	glPushMatrix();
+	glTranslatef(-carPos, -2.0, 0.0);
+	glRotatef(-180, 0, 1.0, 0);
+	glScalef(0.8,0.8,0.0);
+	// Back wheel
+	glPushMatrix();
+	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.08);
+	car.straightLine(0.2, 0.0);
+	car.straightLine(0.0, 0.2);
+	car.straightLine(-0.2, 0.0);
+	car.straightLine(0.0, -0.2);
+	glColor3f(0.863, 0.863, 0.863);
+	car.filled_circle(0.18);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.28);
+	glPopMatrix();
+	// Front wheel
+	glTranslatef(1.0, 0.0, 0.0);
+	glPushMatrix();
+	glRotatef(wheelAngle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.08);
+	car.straightLine(0.2, 0.0);
+	car.straightLine(0.0, 0.2);
+	car.straightLine(-0.2, 0.0);
+	car.straightLine(0.0, -0.2);
+	glColor3f(0.863, 0.863, 0.863);
+	car.filled_circle(0.18);
+	glColor3f(0.0, 0.0, 0.0);
+	car.filled_circle(0.28);
+	glPopMatrix();
+    // Front light
+    if(KeyEvents::skyColor=='n' || KeyEvents::carLight)
+    {
+        glTranslatef(0.65, 0.4, 0.0);
+        glColor3f(1.0, 1.0, 0.0);
+        glRotatef(-90, 0.0, 1.0, 0.0);
+        glPushMatrix();
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.18, 0.3, 20, 20);
+        glPopMatrix();
+        glRotatef(90, 0.0, 1.0, 0.0);
+        glTranslatef(-0.3, -0.15, 0.0);
+        car.filled_quad(0.15, 0.3);
+    }else
+    {
+        glTranslatef(0.65, 0.4, 0.0);
+        glColor3f(1.0, 1.0, 0.0);
+        glRotatef(-90, 0.0, 1.0, 0.0);
+        glPushMatrix();
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        //glutWireCone(0.18, 0.3, 20, 20);
+        glPopMatrix();
+        glRotatef(90, 0.0, 1.0, 0.0);
+        glTranslatef(-0.3, -0.15, 0.0);
+        car.filled_quad(0.15, 0.3);
+    }
+
+	// Back light
+	glTranslatef(-1.85, 0.15, 0.0);
+	glColor3f(1.0, 0.0, 0.0);
+	car.filled_quad(0.1, 0.2);
+	// Body
+	glTranslatef(0.0, -0.4, 0.0);
+	glColor3f(0.600, 0.196, 0.800);
+	car.filled_quad(2.0, 0.6);
+	// Window
+	glRotatef(180, 1.0, 0.0, 0.0);
+	glTranslatef(0.65, -1.0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	car.straightLine(0.0,0.5);
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.5, 0.0, 0.0);
+    glVertex3f(1.0, 0.5, 0.0);
+    glVertex3f(-0.6, 0.5, 0.0);
+    glVertex3f(-0.5, 0.0, 0.0);
+    glEnd();
+    glColor3f(1.0, 1.0, 1.0);
+	glBegin(GL_POLYGON);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.5, 0.0, 0.0);
+    glVertex3f(1.0, 0.5, 0.0);
+    glVertex3f(-0.6, 0.5, 0.0);
+    glVertex3f(-0.5, 0.0, 0.0);
+    glEnd();
+	glPopMatrix();
+
+	    //Lamp Stand
+    glPushMatrix();
+    glPushMatrix();
+    Shapes lampStand;
+    glColor3f(0.412, 0.412, 0.412);
+    glTranslatef(-4.0, -1.6, 0.0);
+    lampStand.filled_quad(0.1,1.5);
+    glPopMatrix();
+    glPushMatrix();
+    glRotatef(10, 0.0, 0.0, 1.0);
+    glTranslatef(-4.2, 0.4, 0.0);
+    lampStand.filled_quad(1.0,0.05);
+    glPopMatrix();
+    glPopMatrix();
+
+    // Lamp light
+    if(KeyEvents::skyColor=='n')
+    {
+        glPushMatrix();
+        glColor3f(1.0, 1.0, 0.0);
+        glTranslatef(-3.2, -0.6, 0.0);
+        glRotatef(-92, 1.0, 0.0, 0.0);
+        glRotatef(-10, 0.0, 1.0, 0.0);
+        glRotatef(_angle, 0.0, 0.0, 1.0);
+        glutWireCone(0.2, 0.5, 20, 20);
+        glPopMatrix();
+    }
+
+
+    // Sand
+    glPushMatrix();
+    Shapes sand;
+    glColor3f(0.0, 0.0, 0.0);
+    glTranslatef(-5.0, -1.5, 0.0);
+    sand.horizontal_long_line(0.0);
+    glColor3f(0.957, 0.643, 0.376);
+    sand.filled_quad(100.0, 2.0);
+    glPopMatrix();
+
+        // Sea
+        glPushMatrix();
+        Shapes sea;
+        glBegin(GL_QUADS);
+        glVertex3f(-5.0, 0.0, 0.0);
+        glVertex3f(5.0, 0.0, 0.0);
+        glColor3f(0.0, 0.749, 1.0);
+        glVertex3f(5.0, 0.8, 0.0);
+        glVertex3f(-5.0, 0.8, 0.0);
+        glEnd();
+        glColor3f(0.0, 0.749, 1.0);
+        glTranslatef(-5.0, 0.5, 0.0);
+        sea.filled_quad(100.0, 1.5);
+        glPopMatrix();
+
+
     // Road Border
     glPushMatrix();
     Shapes roadBorder;
     glColor3f(0.502, 0.502, 0.502);
     glTranslatef(-5.0, -1.7, 0.0);
-    roadBorder.filled_quad(100.0, 0.2);
+    roadBorder.filled_quad(100.0, 0.3);
     glPopMatrix();
 
     // Road Lines
@@ -305,9 +685,10 @@ void drawScene() {
     glTranslatef(-5.0, -3.2, 0.0);
     road.filled_quad(100.0, 1.5);
     glPopMatrix();
-
     glPopMatrix();
 
+        }
+    } // end bracket of window else-if
 	glutSwapBuffers();
 }
 
@@ -331,11 +712,11 @@ void update(int value) {
 
     if(KeyEvents::moveCar)
     {
-        carPos += 0.05f;
+        carPos += 0.035f;
         if(carPos > 6.0)
             carPos = -6.0;
 
-        wheelAngle -= 10.0f;
+        wheelAngle -= 60.0f;
         if (wheelAngle < 0)
             wheelAngle = 360;
     }
@@ -365,8 +746,8 @@ void update(int value) {
         birdPos3 = -6.0;
 
     hotAirBalloonPos -= 0.02;
-    if(hotAirBalloonPos < -5.0)
-        hotAirBalloonPos = 5.0;
+    if(hotAirBalloonPos < -6.0)
+        hotAirBalloonPos = 6.0;
 
     if(KeyEvents::moveVolleyBall)
     {
