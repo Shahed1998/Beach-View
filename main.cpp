@@ -3,6 +3,9 @@
 #include <math.h>
 #include<GL/gl.h>
 #include <GL/glut.h>
+#include<cstring>
+#include<windows.h>
+#include<mmsystem.h>
 // User defined headers
 #include "KeyEvents.h"
 #include "Shapes.h"
@@ -37,6 +40,25 @@ void handleResize(int w, int h) {
 	gluPerspective(45.0, (double)w / (double)h, 1.0, 200.0);
 }
 
+//Print
+void Sprint( float x, float y, char *st)
+{
+    int l,i;
+
+
+    l=strlen( st ); // see how many characters are in text string.
+    glColor3f(1.0,1.0,0.7);
+    //glDisable(GL_LIGHTING);
+    glRasterPos2f( x, y); // location to start printing text
+    for( i=0; i < l; i++) // loop until i is greater then l
+    {
+       glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, st[i]);
+
+    }
+
+
+}
+
 //Draws the 3D scene
 void drawScene() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -55,19 +77,30 @@ void drawScene() {
     // Show Key events
    if(KeyEvents::roomWindow == 'k')
     {
-        glColor4f(0.1, 0.1, 0.1, 0.3);
-        glTranslatef(-1.0, 0.0, -7.0); //Move forward 5 units
+        glTranslatef(-1.0, 0.0, -7.0);
+        // ------------------------------------------------------------------
+        //                                  Text
+        // ------------------------------------------------------------------
         glPushMatrix();
-        glTranslatef(0.0, -2.5, 0.0);
-        glScalef(2.5, 2.5, 0.0);
-        window.filled_quad(2,2);
+
+            // Left side
+            Sprint(0.5,2.0, "Beach View Keys");
+            Sprint(-2.0,1.0, "l = Toggle car light in morning");
+            Sprint(-2.0,0.7, "c = Stop/Start car");
+            Sprint(-2.0,0.4, "a = move boat 1 left");
+            Sprint(-2.0,0.1, "q = move boat 2 left");
+            Sprint(-2.0, -0.2, "esc = close the current display");
+            Sprint(-2.0, -0.5, "p = view presentation");
+            // Right side
+            Sprint(2.0,1.0, "n = Night view");
+            Sprint(2.0,0.7, "m = Morning view");
+            Sprint(2.0,0.4, "d = move boat 1 right");
+            Sprint(2.0,0.1, "e = move boat 2 right");
+            Sprint(2.0, -0.2, "v = move volleyball");
+            Sprint(2.0, -0.5, "k = view keys");
         glPopMatrix();
-        // Inner Box 2
-       glPushMatrix();
-        glTranslatef(0.0, -2.5, 0.0);
-        glScalef(1.5, 2.5, 0.0);
-        window.filled_quad(-2,2);
-        glPopMatrix();
+
+
 
     }
     // Present scenery
@@ -281,8 +314,6 @@ glPushMatrix();
         glRotatef(_angle, 0.0, 0.0, 1.0);
         glutWireCone(0.2, 0.5, 20, 20);
         glPopMatrix();
-
-
 
     // Sand
     glPushMatrix();
@@ -800,12 +831,12 @@ int main(int argc, char** argv) {
 
 	glutTimerFunc(25, update, 0); //Add a timer
 
-	cout << "1. Press d to move boat right" << endl;
+	/* cout << "1. Press d to move boat right" << endl;
 	cout << "2. Press a to move boat left" << endl;
 	cout << "3. Press c to move/stop car" << endl;
 	cout << "4. Press v to throw volley ball" << endl;
-	cout << "5. Press m or n to toggle between day and night" << endl;
-
+	cout << "5. Press m or n to toggle between day and night" << endl; */
+    sndPlaySound("S:\\Varsity\\computer_graphics\\Final\\Tasks\\Beach-View\\Music\\background-music.wav", SND_ASYNC|SND_LOOP);
 	glutMainLoop();
 	return 0;
 }
