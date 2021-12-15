@@ -315,6 +315,123 @@ glPushMatrix();
         glutWireCone(0.2, 0.5, 20, 20);
         glPopMatrix();
 
+    // ---------------------------------------------------------------------- Tree
+    // Tree 1
+    glPushMatrix();
+    glScalef(2.2, 2.2, 0.0);
+    glTranslatef(1.87, 0.3, 0.0);
+    glBegin(GL_QUADS);
+    glColor3ub(216, 117, 0);
+    glVertex2f(+0.65f, -0.8f);
+	glVertex2f(+0.7f, -0.8f);
+	glVertex2f(+0.7f, -0.4f);
+	glVertex2f(+0.65f, -0.4f);
+	glEnd();
+
+    glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.50f, -0.4f);
+	glVertex2f(+0.85f, -0.4f);
+	glVertex2f(+0.675f, -0.15f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.55f, -0.25f);
+	glVertex2f(+0.80f, -0.25f);
+	glVertex2f(+0.675f, -0.05f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.60f, -0.10f);
+	glVertex2f(+0.75f, -0.10f);
+	glVertex2f(+0.675f, +0.05f);
+	glEnd();
+    glPopMatrix();
+    // Tree 2
+    glPushMatrix();
+    glScalef(2.2, 2.2, 0.0);
+    glTranslatef(1.8, 0.3, 0.0);
+    glBegin(GL_QUADS);
+    glColor3ub(216, 117, 0);
+    glVertex2f(+0.25f, -0.8f);
+	glVertex2f(+0.3f, -0.8f);
+	glVertex2f(+0.3f, -0.4f);
+	glVertex2f(+0.25f, -0.4f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.10f, -0.4f);
+	glVertex2f(+0.45f, -0.4f);
+	glVertex2f(+0.275f, -0.15f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.15f, -0.25f);
+	glVertex2f(+0.40f, -0.25f);
+	glVertex2f(+0.275f, -0.05f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.20f, -0.10f);
+	glVertex2f(+0.35f, -0.10f);
+	glVertex2f(+0.275f, +0.05f);
+	glEnd();
+    glPopMatrix();
+
+
+     // Volleyball horizontal net
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 0.0);
+       Shapes net;
+       glTranslatef(-1.6, -0.8, 0.0);
+       glRotatef(10, 0.0, 0.0, 1.0);
+       glRotatef(180, 1.0, 0.0, 0.0);
+       net.filled_quad(1.2, 0.02);
+       glTranslatef(0.0, -0.1, 0.0);
+       net.filled_quad(1.2, 0.02);
+       glTranslatef(0.0, -0.1, 0.0);
+       net.filled_quad(1.2, 0.02);
+       glTranslatef(0.0, -0.1, 0.0);
+       net.filled_quad(1.2, 0.02);
+    glPopMatrix();
+
+    // Volleyball vertical net
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 0.0);
+       //Shapes net;
+       glTranslatef(-1.6, -0.8, 0.0);
+       glRotatef(10, 0.0, 0.0, 1.0);
+       glRotatef(180, 1.0, 0.0, 0.0);
+       //glTranslatef(-2.0, 0.0, 0.0);
+       glTranslatef(0.0, -0.3, 0.0);
+       net.filled_quad(0.02, 0.6);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.6);
+
+
+    glPopMatrix();
+
+
+
     // Sand
     glPushMatrix();
     Shapes sand;
@@ -445,9 +562,236 @@ glPushMatrix();
     glutWireSphere(0.2, 30, 30);
     glPopMatrix();
 
+    // ---------------------------------------------------------------------- Tree
+    // Tree 1
+    glPushMatrix();
+    glScalef(2.2, 2.2, 0.0);
+    glTranslatef(1.87, 0.3, 0.0);
+    glBegin(GL_QUADS);
+    glColor3ub(216, 117, 0);
+    glVertex2f(+0.65f, -0.8f);
+	glVertex2f(+0.7f, -0.8f);
+	glVertex2f(+0.7f, -0.4f);
+	glVertex2f(+0.65f, -0.4f);
+	glEnd();
+
+    glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.50f, -0.4f);
+	glVertex2f(+0.85f, -0.4f);
+	glVertex2f(+0.675f, -0.15f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.55f, -0.25f);
+	glVertex2f(+0.80f, -0.25f);
+	glVertex2f(+0.675f, -0.05f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.60f, -0.10f);
+	glVertex2f(+0.75f, -0.10f);
+	glVertex2f(+0.675f, +0.05f);
+	glEnd();
+    glPopMatrix();
+    // Tree 2
+    glPushMatrix();
+    glScalef(2.2, 2.2, 0.0);
+    glTranslatef(1.8, 0.3, 0.0);
+    glBegin(GL_QUADS);
+    glColor3ub(216, 117, 0);
+    glVertex2f(+0.25f, -0.8f);
+	glVertex2f(+0.3f, -0.8f);
+	glVertex2f(+0.3f, -0.4f);
+	glVertex2f(+0.25f, -0.4f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.10f, -0.4f);
+	glVertex2f(+0.45f, -0.4f);
+	glVertex2f(+0.275f, -0.15f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.15f, -0.25f);
+	glVertex2f(+0.40f, -0.25f);
+	glVertex2f(+0.275f, -0.05f);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+    glColor3ub(1, 128, 0);
+    glVertex2f(+0.20f, -0.10f);
+	glVertex2f(+0.35f, -0.10f);
+	glVertex2f(+0.275f, +0.05f);
+	glEnd();
+    glPopMatrix();
+
+    // Volleyball horizontal net
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 0.0);
+       Shapes net;
+       glTranslatef(-1.6, -0.8, 0.0);
+       glRotatef(10, 0.0, 0.0, 1.0);
+       glRotatef(180, 1.0, 0.0, 0.0);
+       net.filled_quad(1.2, 0.02);
+       glTranslatef(0.0, -0.1, 0.0);
+       net.filled_quad(1.2, 0.02);
+       glTranslatef(0.0, -0.1, 0.0);
+       net.filled_quad(1.2, 0.02);
+       glTranslatef(0.0, -0.1, 0.0);
+       net.filled_quad(1.2, 0.02);
+    glPopMatrix();
+
+    // Volleyball vertical net
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 0.0);
+       //Shapes net;
+       glTranslatef(-1.6, -0.8, 0.0);
+       glRotatef(10, 0.0, 0.0, 1.0);
+       glRotatef(180, 1.0, 0.0, 0.0);
+       //glTranslatef(-2.0, 0.0, 0.0);
+       glTranslatef(0.0, -0.3, 0.0);
+       net.filled_quad(0.02, 0.6);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.3);
+       glTranslatef(0.15, 0.0, 0.0);
+       net.filled_quad(0.02, 0.6);
 
 
-    // Car
+    glPopMatrix();
+
+    //--------------------------------------human 1 start
+    glPushMatrix();
+    glScalef(2.5, 2.0, 0.0);
+    glRotatef(40, 0.0, 1.0, 0.0);
+    glTranslatef(0.5, 0.15, 0.0);
+	glBegin(GL_QUADS);
+    glColor3ub(30, 144, 255);
+    glVertex2f(-0.50f, -0.6f);
+	glVertex2f(-0.60f, -0.6f);
+	glVertex2f(-0.60f, -0.4f);
+	glVertex2f(-0.50f, -0.4f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.53f, -0.4f);
+	glVertex2f(-0.57f, -0.4f);
+	glVertex2f(-0.57f, -0.35f);
+	glVertex2f(-0.53f, -0.35f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.60f, -0.43f);
+	glVertex2f(-0.67f, -0.50f);
+	glVertex2f(-0.69f, -0.50f);
+	glVertex2f(-0.60f, -0.45f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.50f, -0.43f);
+	glVertex2f(-0.43f, -0.50f);
+	glVertex2f(-0.41f, -0.50f);
+	glVertex2f(-0.50f, -0.45f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.58f, -0.6f);
+	glVertex2f(-0.56f, -0.7f);
+	glVertex2f(-0.58f, -0.7f);
+	glVertex2f(-0.56f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.52f, -0.6f);
+	glVertex2f(-0.54f, -0.7f);
+	glVertex2f(-0.52f, -0.7f);
+	glVertex2f(-0.54f, -0.6f);
+	glEnd();
+    glPopMatrix();
+
+
+    //--------------------------------------human 2 start
+    glPushMatrix();
+    glScalef(2.5, 2.0, 0.0);
+    glRotatef(40, 0.0, 1.0, 0.0);
+    glTranslatef(-0.5, 0.15, 0.0);
+	glBegin(GL_QUADS);
+    glColor3ub(30, 144, 255);
+    glVertex2f(-0.50f, -0.6f);
+	glVertex2f(-0.60f, -0.6f);
+	glVertex2f(-0.60f, -0.4f);
+	glVertex2f(-0.50f, -0.4f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.53f, -0.4f);
+	glVertex2f(-0.57f, -0.4f);
+	glVertex2f(-0.57f, -0.35f);
+	glVertex2f(-0.53f, -0.35f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.60f, -0.43f);
+	glVertex2f(-0.67f, -0.50f);
+	glVertex2f(-0.69f, -0.50f);
+	glVertex2f(-0.60f, -0.45f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.50f, -0.43f);
+	glVertex2f(-0.43f, -0.50f);
+	glVertex2f(-0.41f, -0.50f);
+	glVertex2f(-0.50f, -0.45f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.58f, -0.6f);
+	glVertex2f(-0.56f, -0.7f);
+	glVertex2f(-0.58f, -0.7f);
+	glVertex2f(-0.56f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(253, 219, 148);
+    glVertex2f(-0.52f, -0.6f);
+	glVertex2f(-0.54f, -0.7f);
+	glVertex2f(-0.52f, -0.7f);
+	glVertex2f(-0.54f, -0.6f);
+	glEnd();
+    glPopMatrix();
+
+
+
+
+
+
+
+    // ----------------------------------------------------------------------- Car
 glPushMatrix();
 	glTranslatef(carPos, -2.6, 0.0);
 	glScalef(0.8,0.8,0.0);
@@ -744,8 +1088,8 @@ void update(int value) {
     if(KeyEvents::moveCar)
     {
         carPos += 0.035f;
-        if(carPos > 6.0)
-            carPos = -6.0;
+        if(carPos > 7.0)
+            carPos = -7.0;
 
         wheelAngle -= 60.0f;
         if (wheelAngle < 0)
@@ -836,8 +1180,9 @@ int main(int argc, char** argv) {
 	cout << "3. Press c to move/stop car" << endl;
 	cout << "4. Press v to throw volley ball" << endl;
 	cout << "5. Press m or n to toggle between day and night" << endl; */
-    sndPlaySound("S:\\Varsity\\computer_graphics\\Final\\Tasks\\Beach-View\\Music\\background-music.wav", SND_ASYNC|SND_LOOP);
+    //sndPlaySound("S:\\Varsity\\computer_graphics\\Final\\Tasks\\Beach-View\\Music\\background-music.wav", SND_ASYNC|SND_LOOP);
 	glutMainLoop();
+
 	return 0;
 }
 
