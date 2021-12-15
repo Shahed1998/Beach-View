@@ -26,6 +26,7 @@ float hotAirBalloonPos = 3.0;
 float wheelAngle = 360;
 bool bounceBack = false;
 float ballAngle = 0.0;
+float rainPos = 5.0;
 
 //Initializes 3D rendering
 void initRendering() {
@@ -38,6 +39,24 @@ void handleResize(int w, int h) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45.0, (double)w / (double)h, 1.0, 200.0);
+}
+
+// rain
+void _rain()
+{
+    glPushMatrix();
+
+    for (float i =-8.0f; i < 100; i++){
+    glPushMatrix();
+    glBegin(GL_LINES);
+    glColor3f(1.0, 1.0, 1.0);
+    glVertex3f(0.0f,(0.0f + (i*0.3)),0.0f);
+    glVertex3f(0.0f,(0.15f + (i*0.3)),0.0f);
+    glEnd();
+    glPopMatrix();
+    }
+    glPopMatrix();
+
 }
 
 //Print
@@ -108,6 +127,19 @@ void drawScene() {
     {
 
     glTranslatef(-0.5, 0.0, -7.0); //Move forward 5 units
+            if(KeyEvents::rain)
+        {
+            glPushMatrix();
+            glRotatef(-30, 0.0, 0.0, 1.0);
+            for(float i = -65.0f; i< 150.0f; i++)
+            {
+                glPushMatrix();
+                glTranslatef((i*0.4), 0.0f - rainPos, 0.0f);
+                _rain();
+                glPopMatrix();
+            }
+            glPopMatrix();
+        }
     // Boat
     boat2.showBoat(KeyEvents::boatPos2, 4.5);
     glPushMatrix();
@@ -120,6 +152,7 @@ void drawScene() {
     //-----------------------------------------------------------------------
     if(KeyEvents::skyColor=='n')
     {
+
 
         // Moon
         moon.showSunMoon(1.0, 1.0, 1.0, 0.25);
@@ -1094,6 +1127,13 @@ void update(int value) {
         wheelAngle -= 60.0f;
         if (wheelAngle < 0)
             wheelAngle = 360;
+    }
+
+    if(KeyEvents::rain)
+    {
+        rainPos += 0.035f;
+        if(rainPos > 10.0)
+            rainPos = 5.0;
     }
 
     cloudPos1 += 0.01;

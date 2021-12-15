@@ -3,6 +3,7 @@
 float KeyEvents::boatPos = 0.0, KeyEvents::boatPos2 = -5.0;
 bool KeyEvents::moveCar = true;
 bool KeyEvents::carLight = false;
+bool KeyEvents::rain = false;
 bool KeyEvents::moveVolleyBall = true;
 char KeyEvents::skyColor = 'm', KeyEvents::roomWindow = 'p';
 
@@ -88,6 +89,13 @@ void KeyEvents::key(unsigned char key, int x, int y)
             break;
         case 'p':
             KeyEvents::roomWindow = 'p';
+            break;
+        // rain
+        case 'r':
+            if(KeyEvents::rain)
+                KeyEvents::rain = false;
+            else
+                KeyEvents::rain = true;
             break;
 
     }

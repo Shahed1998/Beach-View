@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1639480488 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\keyevents.cpp
+1639565205 source:s:\varsity\computer_graphics\final\tasks\beach-view\src\keyevents.cpp
 	"KeyEvents.h"
 
-1639477202 s:\varsity\computer_graphics\final\tasks\beach-view\include\keyevents.h
+1639565095 s:\varsity\computer_graphics\final\tasks\beach-view\include\keyevents.h
 	<iostream>
 	<stdlib.h>
 	<math.h>
@@ -227,7 +227,7 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1639564600 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
+1639565903 source:s:\varsity\computer_graphics\final\tasks\beach-view\main.cpp
 	<iostream>
 	<stdlib.h>
 	<math.h>
