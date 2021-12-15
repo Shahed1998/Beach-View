@@ -1220,7 +1220,7 @@ int main(int argc, char** argv) {
 	cout << "3. Press c to move/stop car" << endl;
 	cout << "4. Press v to throw volley ball" << endl;
 	cout << "5. Press m or n to toggle between day and night" << endl; */
-    //sndPlaySound("S:\\Varsity\\computer_graphics\\Final\\Tasks\\Beach-View\\Music\\background-music.wav", SND_ASYNC|SND_LOOP);
+    sndPlaySound("S:\\Varsity\\computer_graphics\\Final\\Tasks\\Beach-View\\Music\\background-music.wav", SND_ASYNC|SND_LOOP);
 	glutMainLoop();
 
 	return 0;
