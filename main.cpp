@@ -87,7 +87,7 @@ void drawScene() {
 
 
     // Shape's instances
-    Shapes window,car,
+    Shapes window,car, star,
         boat1, boat2,
         cloud1, cloud2, cloud3,
         bird1, bird2, bird3,
@@ -152,9 +152,13 @@ void drawScene() {
     //-----------------------------------------------------------------------
     if(KeyEvents::skyColor=='n')
     {
-
-
+        glPushMatrix();
+        glScalef(0.5,0.5,0);
+        glColor3f(1.0, 1.0, 1.0);
+        star.filled_star();
+        glPopMatrix();
         // Moon
+
         moon.showSunMoon(1.0, 1.0, 1.0, 0.25);
         // Sky
         glPushMatrix();

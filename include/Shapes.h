@@ -23,6 +23,7 @@ class Shapes
         void showBirds(float birdPos);
         void showBoat(float boatPos, float y);
         void showSunMoon(float red, float green, float blue, float r);
+        void filled_star();
 };
 
 #endif // LINES_H

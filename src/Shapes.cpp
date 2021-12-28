@@ -186,3 +186,20 @@ void Shapes::showSunMoon(float red, float green, float blue, float r)
         filled_circle(r);
     glPopMatrix();
 }
+
+void Shapes::filled_star()
+{
+        glBegin(GL_POLYGON);
+        glVertex3i(240, 185, 0); //8
+        glVertex3i(215, 180, 0); //9
+        glVertex3i(235, 150, 0); //10
+        glVertex3i(250, 235, 0); //7
+        glVertex3i(260, 185, 0); //6
+        glVertex3i(285, 180, 0); //5
+        glVertex3i(265, 150, 0); //4
+        glVertex3i(270, 100, 0); //3
+        glVertex3i(250, 130, 0); //2
+        glVertex3i(230, 100, 0); //1
+        glVertex3i(235, 150, 0); //10
+        glEnd();
+}
